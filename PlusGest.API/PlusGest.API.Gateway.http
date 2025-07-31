@@ -1,0 +1,6 @@
+@PlusGest.API_HostAddress = http://localhost:5263
+
+GET {{PlusGest.API_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
