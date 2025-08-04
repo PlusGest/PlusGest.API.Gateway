@@ -139,7 +139,7 @@ app.UseSwaggerUI(options =>
     foreach (var description in provider.ApiVersionDescriptions)
     {
         options.SwaggerEndpoint($"/swagger/{description.GroupName}/swagger.json",
-            $"API PlusGest {description.GroupName.ToUpperInvariant()}");
+            $"API PlusGest Gateway {description.GroupName.ToUpperInvariant()}");
     }
 });
 

@@ -20,9 +20,9 @@ namespace PlusGest.API.Gateway.Configs
             {
                 options.SwaggerDoc(description.GroupName, new OpenApiInfo
                 {
-                    Title = "API PlusGest (Gestão La Plus e One Plus)",
+                    Title = "API PlusGest Gateway (Gestão La Plus e One Plus)",
                     Version = description.ApiVersion.ToString(),
-                    Description = "Documentação da API PlusGest (Gestão La Plus e One Plus)",
+                    Description = "Documentação da API PlusGest Gateway (Gestão La Plus e One Plus)",
                 });
             }
         }
