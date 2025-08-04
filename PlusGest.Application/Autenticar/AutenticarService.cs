@@ -46,14 +46,14 @@ namespace PlusGest.Application.Autenticar
                 new Claim("Funcao", model.Funcao.ToString()),   
                 new Claim("Unidade", model.Unidade.ToString()),
                 new Claim("NomeUsuario", model.NomeUsuario),    
+                new Claim(JwtRegisteredClaimNames.Iss, "api-plusgest-gateway"),
+                new Claim(JwtRegisteredClaimNames.Aud, "api-plusgest-simulador"),
             };
 
             var security = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_Configuration["Jwt:Key"] ?? string.Empty));
             var credecials = new SigningCredentials(security, SecurityAlgorithms.HmacSha256);
 
             var token = new JwtSecurityToken(
-                issuer: _Configuration["Jwt:iss"],
-                audience: _Configuration["Jwt:aud"],
                 claims: claims,
                 expires: DateTime.Now.AddDays(1),
                 signingCredentials: credecials
