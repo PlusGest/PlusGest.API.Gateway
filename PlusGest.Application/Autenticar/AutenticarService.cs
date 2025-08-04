@@ -52,6 +52,8 @@ namespace PlusGest.Application.Autenticar
             var credecials = new SigningCredentials(security, SecurityAlgorithms.HmacSha256);
 
             var token = new JwtSecurityToken(
+                issuer: _Configuration["Jwt:iss"],
+                audience: _Configuration["Jwt:aud"],
                 claims: claims,
                 expires: DateTime.Now.AddDays(1),
                 signingCredentials: credecials

@@ -14,6 +14,7 @@ namespace PlusGest.API.Gateway.Configs
         {
             _provider = provider;
         }
+
         public void Configure(SwaggerGenOptions options)
         {
             foreach (var description in _provider.ApiVersionDescriptions)
