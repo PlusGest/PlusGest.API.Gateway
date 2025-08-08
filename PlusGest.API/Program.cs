@@ -109,7 +109,7 @@ builder.Services.AddCors(options =>
     options.AddPolicy("NgOrigins", policy =>
     {
         policy
-            .WithOrigins("https://plusgest-front.onrender.com", "htpp://localhost:4200")
+            .WithOrigins("https://plusgest-front.onrender.com", "http://localhost:4200")
             .AllowCredentials();
     });
 });
