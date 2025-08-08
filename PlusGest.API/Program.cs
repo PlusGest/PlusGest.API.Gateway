@@ -110,6 +110,8 @@ builder.Services.AddCors(options =>
     {
         policy
             .WithOrigins("https://plusgest-front.onrender.com", "http://localhost:4200")
+            .AllowAnyHeader()
+            .AllowAnyMethod()
             .AllowCredentials();
     });
 });
