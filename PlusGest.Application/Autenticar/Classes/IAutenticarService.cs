@@ -1,7 +1,7 @@
-﻿using PlusGest.Domain.Presentation.Request.Autenticar;
-using PlusGest.Domain.Presentation.Response.Autenticar;
+﻿using PlusGest.Gateway.Domain.Presentation.Request.Autenticar;
+using PlusGest.Gateway.Domain.Presentation.Response.Autenticar;
 
-namespace PlusGest.Application.Autenticar.Classes
+namespace PlusGest.Gateway.Application.Autenticar.Classes
 {
     public interface IAutenticarService
     {

@@ -1,4 +1,4 @@
-﻿namespace PlusGest.Domain.Presentation.Response.Pagination
+﻿namespace PlusGest.Gateway.Domain.Presentation.Response.Pagination
 {
     public class PaginationResponse<T>
     {

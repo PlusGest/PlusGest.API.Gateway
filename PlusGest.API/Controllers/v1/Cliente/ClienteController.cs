@@ -1,12 +1,12 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using PlusGest.Application.Cliente.Classe;
-using PlusGest.Domain.Presentation.Request.Cliente;
-using PlusGest.Domain.Presentation.Response.Cliente;
-using PlusGest.Domain.Presentation.Response.Error;
-using PlusGest.Domain.Presentation.Response.Pagination;
+using PlusGest.Gateway.Application.Cliente.Classe;
+using PlusGest.Gateway.Domain.Presentation.Request.Cliente;
+using PlusGest.Gateway.Domain.Presentation.Response.Cliente;
+using PlusGest.Gateway.Domain.Presentation.Response.Error;
+using PlusGest.Gateway.Domain.Presentation.Response.Pagination;
 
-namespace PlusGest.API.Gateway.Controllers.v1.Cliente
+namespace PlusGest.Gateway.API.Controllers.v1.Cliente
 {
     [ApiController]
     [ApiVersion("1.0")]

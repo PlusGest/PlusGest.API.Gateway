@@ -1,37 +1,25 @@
-﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
+﻿using Mapster;
+using MapsterMapper;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ApiExplorer;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
-using PlusGest.Application.Autenticar.Classes;
-using PlusGest.Application.Autenticar;
-using PlusGest.Application.Cliente;
-using PlusGest.Application.Cliente.Classe;
-using PlusGest.Application.Simulador;
-using PlusGest.Application.Simulador.Classes;
-using PlusGest.Application.Usuario;
-using PlusGest.Application.Usuario.Classe;
-using PlusGest.Infrastructure.Database;
-using PlusGest.Shared.Exeptions.Middleware;
+using PlusGest.Gateway.API.Configs;
+using PlusGest.Gateway.Application.Autenticar;
+using PlusGest.Gateway.Application.Autenticar.Classes;
+using PlusGest.Gateway.Application.Cliente;
+using PlusGest.Gateway.Application.Cliente.Classe;
+using PlusGest.Gateway.Application.Usuario;
+using PlusGest.Gateway.Application.Usuario.Classe;
+using PlusGest.Gateway.Application.UsuarioAtual;
+using PlusGest.Gateway.Application.UsuarioAtual.Classe;
+using PlusGest.Gateway.Infrastructure.Database;
+using PlusGest.Gateway.Shared.Exeptions.Middleware;
+using PlusGest.Gateway.Shared.Mappers;
 using Swashbuckle.AspNetCore.Filters;
 using System.Reflection;
 using System.Text;
-using PlusGest.Shared.Mappers;
-using MapsterMapper;
-using Mapster;
-using PlusGest.Application.UsuarioAtual.Classe;
-using PlusGest.Application.UsuarioAtual;
-using PlusGest.Application.SimuladorCliente;
-using PlusGest.Application.SimuladorCliente.Classes;
-using PlusGest.Application.SimuladorVeiculo;
-using PlusGest.Application.SimuladorVeiculo.Classes;
-using PlusGest.Application.SimuladorImovel.Classes;
-using PlusGest.Application.SimuladorImovel;
-using PlusGest.Application.SimuladorNegociacao;
-using PlusGest.Application.SimuladorNegociacao.Classes;
-using PlusGest.Application.SimuladorPagamento;
-using PlusGest.Application.SimuladorPagamento.Classes;
-using PlusGest.API.Gateway.Configs;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -103,19 +91,17 @@ builder.Services.AddScoped<IAutenticarService, AutenticarService>();
 builder.Services.AddScoped<IUsuarioService, UsuarioService>();
 builder.Services.AddScoped<IUsuarioAtualService, UsuarioAtualService>();
 
-//INJEÇÃO DE DEPENDÊNCIAS DOS SERVIÇOS DO SIMULADOR
-builder.Services.AddScoped<ISimuladorService, SimuladorService>();
-builder.Services.AddScoped<ISimuladorClienteService, SimuladorClienteService>();
-builder.Services.AddScoped<ISimuladorVeiculoService, SimuladorVeiculoService>();
-builder.Services.AddScoped<ISimuladorImovelService, SimuladorImovelService>();
-builder.Services.AddScoped<ISimuladorNegociacaoService, SimuladorNegociacaoService>();
-builder.Services.AddScoped<ISimuladorPagamentoService, SimuladorPagamentoService>();
-
 //INJEÇÃO DE DEPENDÊNCIAS DOS SERVIÇOS DO CLIENTE
 builder.Services.AddScoped<IClienteService, ClienteService>();
 
 builder.Services.ConfigureOptions<ConfigureSwaggerOptions>();
 builder.Services.AddHttpContextAccessor();
+builder.Services.AddHttpClient("SimuladorClient", (serviceProvider, client) =>
+{
+    var config = serviceProvider.GetRequiredService<IConfiguration>();
+    var baseUrl = config["Services:Simulador"] ?? throw new InvalidOperationException("A URL do serviço simulador está vazia.");
+    client.BaseAddress = new Uri(baseUrl);
+});
 
 //CONFIGURAÇÕES DO CORS
 builder.Services.AddCors(options =>

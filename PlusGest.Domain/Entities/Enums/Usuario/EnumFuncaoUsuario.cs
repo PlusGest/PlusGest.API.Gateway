@@ -1,4 +1,4 @@
-﻿namespace PlusGest.Domain.Entities.Enums.Usuario
+﻿namespace PlusGest.Gateway.Domain.Entities.Enums.Usuario
 {
     public enum EnumFuncaoUsuario
     {

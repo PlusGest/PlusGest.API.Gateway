@@ -1,6 +1,6 @@
-﻿using PlusGest.Domain.Entities.Enums.Cliente;
+﻿using PlusGest.Gateway.Domain.Entities.Enums.Cliente;
 
-namespace PlusGest.Domain.Presentation.Response.Cliente
+namespace PlusGest.Gateway.Domain.Presentation.Response.Cliente
 {
     public class ClienteResponse
     {

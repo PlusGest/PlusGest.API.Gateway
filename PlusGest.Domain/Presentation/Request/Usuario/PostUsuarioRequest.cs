@@ -1,11 +1,10 @@
 ﻿using PlusGest.Gateway.Domain.Entities.Enums.Usuario;
 
-namespace PlusGest.Gateway.Domain.Presentation.Response.Usuario
+namespace PlusGest.Gateway.Domain.Presentation.Request.Usuario
 {
-    public class UsuarioResponse
+    public class PostUsuarioRequest
     {
         #region Propriedades
-        public Guid UsuarioId { get; set; }
         public string NomeCompleto { get; set; } = string.Empty;
         public string CPF { get; set; } = string.Empty;
         public DateTime DataNascimento { get; set; }

@@ -1,19 +1,18 @@
 ﻿using Mapster;
 using MapsterMapper;
 using Microsoft.EntityFrameworkCore;
-using PlusGest.Application.Usuario.Classe;
-using PlusGest.Application.UsuarioAtual.Classe;
-using PlusGest.Domain.DTOs.Usuario;
-using PlusGest.Domain.Entities.Enums.Usuario;
-using PlusGest.Domain.Entities.Usuario;
-using PlusGest.Domain.Presentation.Request.Usuario;
-using PlusGest.Domain.Presentation.Response.Pagination;
-using PlusGest.Domain.Presentation.Response.Usuario;
-using PlusGest.Infrastructure.Database;
-using PlusGest.Shared.Exeptions.BadRequest;
-using PlusGest.Shared.Exeptions.Forbidden;
+using PlusGest.Gateway.Application.Usuario.Classe;
+using PlusGest.Gateway.Application.UsuarioAtual.Classe;
+using PlusGest.Gateway.Domain.Entities.Enums.Usuario;
+using PlusGest.Gateway.Domain.Entities.Usuario;
+using PlusGest.Gateway.Domain.Presentation.Request.Usuario;
+using PlusGest.Gateway.Domain.Presentation.Response.Pagination;
+using PlusGest.Gateway.Domain.Presentation.Response.Usuario;
+using PlusGest.Gateway.Infrastructure.Database;
+using PlusGest.Gateway.Shared.Exeptions.BadRequest;
+using PlusGest.Gateway.Shared.Exeptions.Forbidden;
 
-namespace PlusGest.Application.Usuario
+namespace PlusGest.Gateway.Application.Usuario
 {
     public class UsuarioService : IUsuarioService
     {
@@ -33,7 +32,7 @@ namespace PlusGest.Application.Usuario
         #endregion
 
         #region Adiconar Usuario
-        public async Task<UsuarioResponse> AdicionarUsuario(UsuarioRequest model)
+        public async Task<UsuarioResponse> AdicionarUsuario(PostUsuarioRequest model)
         {
             var usuarioAtual = _usuarioAtualService.UsuarioAtual();
 
@@ -118,9 +117,9 @@ namespace PlusGest.Application.Usuario
         #endregion
 
         #region Editar Usuário
-        public async Task<UsuarioResponse> EditarUsuario(Guid usuarioId, UsuarioRequest model)
+        public async Task<UsuarioResponse> EditarUsuario(Guid usuarioId, PostUsuarioRequest model)
         {
-            var usuario = _mapper.Map<UsuarioDTO>(model);
+            var usuario = _mapper.Map<UsuarioResponse>(model);
 
             var usuarioExiste = await _plusGestDataContext.Set<UsuarioEntity>()
                 .Where(x => x.UsuarioId == usuario.UsuarioId).FirstOrDefaultAsync();

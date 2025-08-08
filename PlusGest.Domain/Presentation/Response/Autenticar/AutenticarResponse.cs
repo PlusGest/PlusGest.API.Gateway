@@ -1,4 +1,4 @@
-﻿namespace PlusGest.Domain.Presentation.Response.Autenticar
+﻿namespace PlusGest.Gateway.Domain.Presentation.Response.Autenticar
 {
     public class AutenticarResponse
     {

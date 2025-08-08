@@ -1,11 +1,11 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using PlusGest.Application.Autenticar.Classes;
-using PlusGest.Domain.Presentation.Request.Autenticar;
-using PlusGest.Domain.Presentation.Response.Autenticar;
-using PlusGest.Domain.Presentation.Response.Error;
+using PlusGest.Gateway.Application.Autenticar.Classes;
+using PlusGest.Gateway.Domain.Presentation.Request.Autenticar;
+using PlusGest.Gateway.Domain.Presentation.Response.Autenticar;
+using PlusGest.Gateway.Domain.Presentation.Response.Error;
 using System.ComponentModel.DataAnnotations;
 
-namespace PlusGest.API.Gateway.Controllers.v1.Autenticar
+namespace PlusGest.Gateway.API.Controllers.v1.Autenticar
 {
     [ApiController]
     [ApiVersion("1.0")]

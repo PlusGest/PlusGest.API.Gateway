@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace PlusGest.Domain.Entities.Cliente.ClienteObservacao
+namespace PlusGest.Gateway.Domain.Entities.Cliente.ClienteObservacao
 {
     public class ClienteObservacaoEntity
     {

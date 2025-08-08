@@ -1,4 +1,4 @@
-﻿namespace PlusGest.Domain.Entities.Enums.Cliente
+﻿namespace PlusGest.Gateway.Domain.Entities.Enums.Cliente
 {
     public enum EnumClienteStatus
     {

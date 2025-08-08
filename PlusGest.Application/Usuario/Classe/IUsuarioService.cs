@@ -1,8 +1,8 @@
-﻿using PlusGest.Domain.Presentation.Request.Usuario;
-using PlusGest.Domain.Presentation.Response.Pagination;
-using PlusGest.Domain.Presentation.Response.Usuario;
+﻿using PlusGest.Gateway.Domain.Presentation.Request.Usuario;
+using PlusGest.Gateway.Domain.Presentation.Response.Pagination;
+using PlusGest.Gateway.Domain.Presentation.Response.Usuario;
 
-namespace PlusGest.Application.Usuario.Classe
+namespace PlusGest.Gateway.Application.Usuario.Classe
 {
     public interface IUsuarioService
     {
@@ -10,9 +10,9 @@ namespace PlusGest.Application.Usuario.Classe
 
         public Task<UsuarioResponse> BuscarUsuarioById(Guid usuarioId);
 
-        public Task<UsuarioResponse> AdicionarUsuario(UsuarioRequest model);
+        public Task<UsuarioResponse> AdicionarUsuario(PostUsuarioRequest model);
 
-        public Task<UsuarioResponse> EditarUsuario(Guid usuarioId, UsuarioRequest model);
+        public Task<UsuarioResponse> EditarUsuario(Guid usuarioId, PostUsuarioRequest model);
 
         public Task DeletarUsuario(Guid usuarioId);
     }

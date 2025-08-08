@@ -1,8 +1,8 @@
 ﻿using PlusGest.Gateway.Domain.Entities.Enums.Usuario;
 
-namespace PlusGest.Gateway.Domain.Presentation.Response.Usuario
+namespace PlusGest.Gateway.Domain.Presentation.Request.Usuario
 {
-    public class UsuarioResponse
+    public class PutUsuarioRequest
     {
         #region Propriedades
         public Guid UsuarioId { get; set; }

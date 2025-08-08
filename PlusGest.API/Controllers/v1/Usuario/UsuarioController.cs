@@ -1,13 +1,13 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using PlusGest.Application.Usuario.Classe;
-using PlusGest.Domain.Presentation.Request.Usuario;
-using PlusGest.Domain.Presentation.Response.Error;
-using PlusGest.Domain.Presentation.Response.Pagination;
-using PlusGest.Domain.Presentation.Response.Usuario;
+using PlusGest.Gateway.Application.Usuario.Classe;
+using PlusGest.Gateway.Domain.Presentation.Request.Usuario;
+using PlusGest.Gateway.Domain.Presentation.Response.Error;
+using PlusGest.Gateway.Domain.Presentation.Response.Pagination;
+using PlusGest.Gateway.Domain.Presentation.Response.Usuario;
 using System.ComponentModel.DataAnnotations;
 
-namespace PlusGest.API.Gateway.Controllers.v1.Usuario
+namespace PlusGest.Gateway.API.Controllers.v1.Usuario
 {
     [ApiController]
     [ApiVersion("1.0")]
@@ -41,7 +41,7 @@ namespace PlusGest.API.Gateway.Controllers.v1.Usuario
         [ProducesResponseType(typeof(ErrorResponse), 401)]
         [ProducesResponseType(typeof(ErrorResponse), 403)]
         [ProducesResponseType(typeof(ErrorResponse), 500)]
-        public async Task<ActionResult<UsuarioResponse>> AdicionarUsuario([FromBody][Required] UsuarioRequest model)
+        public async Task<ActionResult<UsuarioResponse>> AdicionarUsuario([FromBody][Required] PostUsuarioRequest model)
         {
             var res = await _usuarioService.AdicionarUsuario(model);
             return CreatedAtAction(nameof(BuscarUsuarioById), new { usuarioId = res.UsuarioId }, res);
@@ -110,7 +110,7 @@ namespace PlusGest.API.Gateway.Controllers.v1.Usuario
         [ProducesResponseType(typeof(ErrorResponse), 401)]
         [ProducesResponseType(typeof(ErrorResponse), 403)]
         [ProducesResponseType(typeof(ErrorResponse), 500)]
-        public async Task<ActionResult<UsuarioResponse>> EditarUsuario(Guid usuarioId, [FromBody][Required] UsuarioRequest model)
+        public async Task<ActionResult<UsuarioResponse>> EditarUsuario(Guid usuarioId, [FromBody][Required] PostUsuarioRequest model)
         {
             var res = await _usuarioService.EditarUsuario(usuarioId, model);
             return Ok(res);

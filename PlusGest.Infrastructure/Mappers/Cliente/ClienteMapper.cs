@@ -1,10 +1,9 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using PlusGest.Domain.Entities.Cliente;
-using PlusGest.Domain.Entities.Simulador;
-using PlusGest.Domain.Entities.Usuario;
+using PlusGest.Gateway.Domain.Entities.Cliente;
+using PlusGest.Gateway.Domain.Entities.Usuario;
 
-namespace PlusGest.Infrastructure.Mappers.Cliente
+namespace PlusGest.Gateway.Infrastructure.Mappers.Cliente
 {
     public static class ClienteMapper
     {
@@ -20,10 +19,6 @@ namespace PlusGest.Infrastructure.Mappers.Cliente
                    .WithMany()
                    .HasForeignKey(x => x.Usuarioid)
                    .OnDelete(DeleteBehavior.Restrict);
-                b.HasOne<SimuladorEntity>()
-                     .WithMany()
-                     .HasForeignKey(x => x.SimuladorId)
-                     .OnDelete(DeleteBehavior.Restrict);
 
                 //Properties
                 b.Property(x => x.NomeCompleto)

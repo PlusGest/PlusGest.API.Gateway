@@ -1,6 +1,6 @@
-﻿using PlusGest.Domain.Presentation.Response.Usuario;
+﻿using PlusGest.Gateway.Domain.Presentation.Response.Usuario;
 
-namespace PlusGest.Application.UsuarioAtual.Classe
+namespace PlusGest.Gateway.Application.UsuarioAtual.Classe
 {
     public interface IUsuarioAtualService
     {

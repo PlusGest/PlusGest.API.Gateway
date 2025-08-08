@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using PlusGest.Domain.Entities.Cliente;
-using PlusGest.Domain.Entities.Cliente.ClienteObservacao;
+using PlusGest.Gateway.Domain.Entities.Cliente;
+using PlusGest.Gateway.Domain.Entities.Cliente.ClienteObservacao;
 
 namespace PlusGest.Infrastructure.Mappers.Cliente.ClienteObservacao
 {

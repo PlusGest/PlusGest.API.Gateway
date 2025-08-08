@@ -1,10 +1,10 @@
 ﻿using Microsoft.AspNetCore.Http;
-using PlusGest.Application.UsuarioAtual.Classe;
-using PlusGest.Domain.Entities.Enums.Usuario;
-using PlusGest.Domain.Presentation.Response.Usuario;
-using PlusGest.Shared.Exeptions.Forbidden;
+using PlusGest.Gateway.Application.UsuarioAtual.Classe;
+using PlusGest.Gateway.Domain.Entities.Enums.Usuario;
+using PlusGest.Gateway.Domain.Presentation.Response.Usuario;
+using PlusGest.Gateway.Shared.Exeptions.Forbidden;
 
-namespace PlusGest.Application.UsuarioAtual
+namespace PlusGest.Gateway.Application.UsuarioAtual
 {
     public class UsuarioAtualService : IUsuarioAtualService
     {
@@ -33,6 +33,7 @@ namespace PlusGest.Application.UsuarioAtual
                 CPF = claims.GetValueOrDefault("CPF", string.Empty),
                 DataNascimento = DateTime.TryParse(claims.GetValueOrDefault("DataNascimento"), out var dataNasc)
                                  ? dataNasc : DateTime.MinValue,
+                EmailCorporativo = claims.GetValueOrDefault("EmailCorporativo", string.Empty),
                 Status = Enum.TryParse(claims.GetValueOrDefault("Status"), out EnumStatusUsuario status)
                                  ? status : EnumStatusUsuario.Ativo,
                 Departamento = Enum.TryParse(claims.GetValueOrDefault("Departamento"), out EnumDepartamentoUsuario dep)
@@ -41,7 +42,7 @@ namespace PlusGest.Application.UsuarioAtual
                                  ? fun : EnumFuncaoUsuario.DiretoriaGeral,
                 Unidade = Enum.TryParse(claims.GetValueOrDefault("Unidade"), out EnumUnidadeUsuario uni)
                                  ? uni : EnumUnidadeUsuario.LaPlus,
-                NomeUsuario = claims.GetValueOrDefault("NomeUsuario", string.Empty),
+                Login = claims.GetValueOrDefault("Login", string.Empty),
             };
 
             return usuario ?? new UsuarioResponse();

@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using PlusGest.Domain.Entities.Usuario;
+using PlusGest.Gateway.Domain.Entities.Usuario;
 
 namespace PlusGest.Infrastructure.Mappers.Usuario
 {
@@ -8,6 +8,7 @@ namespace PlusGest.Infrastructure.Mappers.Usuario
     {
         public class Usuario : IEntityTypeConfiguration<UsuarioEntity> 
         {
+            #region Mapper
             public void Configure(EntityTypeBuilder<UsuarioEntity> b)
             {
                 //Primary Key
@@ -23,6 +24,9 @@ namespace PlusGest.Infrastructure.Mappers.Usuario
                 b.Property(x => x.DataNascimento)
                     .IsRequired()
                     .HasColumnType("datetime");
+                b.Property(x => x.EmailCorporativo)
+                    .IsRequired()
+                    .HasMaxLength(200);
                 b.Property(x => x.Status)
                     .IsRequired()
                     .HasConversion<int>();
@@ -35,14 +39,13 @@ namespace PlusGest.Infrastructure.Mappers.Usuario
                 b.Property(x => x.Unidade)
                     .IsRequired()
                     .HasConversion<int>();
-                b.Property(x => x.NomeUsuario)
+                b.Property(x => x.Login)
                     .IsRequired()
                     .HasMaxLength(200);
                 b.Property(x => x.Senha)
                     .IsRequired()
                     .HasMaxLength(30);
                 b.Property(x => x.FotoUrl)
-                    .IsRequired()
                     .HasMaxLength(200);
                 b.Property(x => x.DataCadastro)
                     .IsRequired()
@@ -51,7 +54,8 @@ namespace PlusGest.Infrastructure.Mappers.Usuario
 
                 //Table Mapping
                 b.ToTable("Usuario");
-            }
+            } 
+            #endregion
         }
     }
 }

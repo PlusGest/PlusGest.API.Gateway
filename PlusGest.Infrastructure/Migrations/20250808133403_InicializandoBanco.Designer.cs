@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using PlusGest.Gateway.Infrastructure.Database;
 
@@ -11,9 +12,11 @@ using PlusGest.Gateway.Infrastructure.Database;
 namespace PlusGest.Gateway.Infrastructure.Migrations
 {
     [DbContext(typeof(PlusGestDataContext))]
-    partial class PlusGestDataContextModelSnapshot : ModelSnapshot
+    [Migration("20250808133403_InicializandoBanco")]
+    partial class InicializandoBanco
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

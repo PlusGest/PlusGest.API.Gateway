@@ -1,21 +1,26 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Newtonsoft.Json;
-using PlusGest.Domain.Presentation.Response.Error;
-using PlusGest.Shared.Exeptions.BadRequest;
-using PlusGest.Shared.Exeptions.Forbidden;
+using PlusGest.Gateway.Domain.Presentation.Response.Error;
+using PlusGest.Gateway.Shared.Exeptions.BadRequest;
+using PlusGest.Gateway.Shared.Exeptions.Forbidden;
 using System.Net;
 
-namespace PlusGest.Shared.Exeptions.Middleware
+namespace PlusGest.Gateway.Shared.Exeptions.Middleware
 {
     public class PlusGestExceptionMiddleware
     {
+        #region Dependências
         private readonly RequestDelegate _next;
+        #endregion
 
+        #region Construtores
         public PlusGestExceptionMiddleware(RequestDelegate next)
         {
             _next = next;
         }
+        #endregion
 
+        #region Invoke Async
         public async Task InvokeAsync(HttpContext context)
         {
             try
@@ -27,7 +32,9 @@ namespace PlusGest.Shared.Exeptions.Middleware
                 await HandleExceptionAsync(context, ex);
             }
         }
+        #endregion
 
+        #region Handle Exception 
         private Task HandleExceptionAsync(HttpContext context, Exception exception)
         {
             var statusCode = (int)HttpStatusCode.InternalServerError;
@@ -53,7 +60,7 @@ namespace PlusGest.Shared.Exeptions.Middleware
             {
                 StatusCode = statusCode,
                 Message = message,
-                Details = exception.StackTrace 
+                Details = exception.StackTrace
             };
 
             var errorJson = JsonConvert.SerializeObject(errorResponse);
@@ -62,6 +69,7 @@ namespace PlusGest.Shared.Exeptions.Middleware
             context.Response.StatusCode = statusCode;
 
             return context.Response.WriteAsync(errorJson);
-        }
+        } 
+        #endregion
     }
 }

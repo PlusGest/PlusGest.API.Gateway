@@ -1,4 +1,4 @@
-﻿namespace PlusGest.Domain.Presentation.Response.Error
+﻿namespace PlusGest.Gateway.Domain.Presentation.Response.Error
 {
     public class ErrorResponse
     {
