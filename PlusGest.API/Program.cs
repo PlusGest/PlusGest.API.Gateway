@@ -109,7 +109,7 @@ builder.Services.AddCors(options =>
     options.AddPolicy("NgOrigins", policy =>
     {
         policy
-            .WithOrigins("https://plusgest-front.onrender.com", "http://localhost:4200")
+            .WithOrigins("https://app-plusgest.azurewebsites.net", "http://localhost:4200")
             .AllowAnyHeader()
             .AllowAnyMethod()
             .AllowCredentials();
